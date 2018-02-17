@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/assets/css/jquery.fancybox.min.css" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+	<body>
+		<!-- Nav -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="/">
+						<span class="glyphicon glyphicon-home"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- Main -->
+		<section id="main">
+			<div class="container-fluid">
+				<div class="row">
+					{{#each galleries.list}}
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<a href="{{url}}">
+								<div class="thumbnail">
+									{{#if images}}
+									<div class="img-fluid img-thumbnail" style="background-image: url('{{images.0.url320}}');"></div>
+									{{else}}
+									<div class="img-fluid img-thumbnail" style="background-image: url('/assets/images/placeholder-320x320-nofill-255255255.png');"></div>
+									{{/if}}
+									<div class="caption">
+										<h3>{{base}}</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					{{/each}}
+					{{#each galleries.subGallery}}
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<a href="{{url}}">
+								<div class="thumbnail">
+									{{#if images}}
+									<div class="img-fluid img-thumbnail" style="background-image: url('{{images.0.url320}}');"></div>
+									{{else}}
+									<div class="img-fluid img-thumbnail" style="background-image: url('/assets/images/placeholder-320x320-nofill-255255255.png');"></div>
+									{{/if}}
+									<div class="caption">
+										<h3>{{base}}</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					{{/each}}
+					{{#each galleries.images}}
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<a data-fancybox="gallery" href="{{url1024}}">
+							<div class="thumbnail">
+								{{#if url320}}
+								<div class="img-fluid img-thumbnail" style="background-image: url('{{url320}}');"></div>
+								{{else}}
+								<div class="img-fluid img-thumbnail" style="background-image: url('/assets/images/placeholder-320x320-nofill-255255255.png');"></div>
+								{{/if}}
+								<div class="caption left">
+									<p class="name">{{name}}</p>
+									<p class="modified">{{formatDate metadata.image.ModifyDate}}</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					{{/each}}
+					{{#each galleries.videos}}
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<video class="videos" controls>
+							<!-- Link to Video -->
+							<source src="{{url}}" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		</section>
+
+		<!-- Scripts -->
+		<script src="/assets/js/jquery-3.2.1.min.js"></script>
+		<script src="/assets/js/jquery.fancybox.min.js"></script>
+	</body>
+</html>
